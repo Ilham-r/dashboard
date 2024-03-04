@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 const CreateA = () => {
-  const [submitting, setSubmitting] = useState(false);
   const router = useRouter();
 
   const { data: session } = useSession();
@@ -25,9 +24,7 @@ const CreateA = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitting(true);
 
-    console.log("form after updating", form);
     try {
       const response = await fetch("/api/asset/new", {
         method: "POST",
@@ -39,8 +36,6 @@ const CreateA = () => {
       }
     } catch (error) {
       console.log(error);
-    } finally {
-      setSubmitting(false);
     }
   };
 
@@ -50,6 +45,7 @@ const CreateA = () => {
         <div className="pages-padding flex-col justify-center items-start gap-8 ">
           <h1 className="head_title w-full ">Create Asset</h1>
           <ProjectForm
+            type="Create"
             form={form}
             setForm={setForm}
             handleSubmit={handleSubmit}

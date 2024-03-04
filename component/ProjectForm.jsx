@@ -1,7 +1,13 @@
 "use client";
 import { CldUploadWidget } from "next-cloudinary";
 import { useEffect, useState } from "react";
-const ProjectForm = ({ handleSubmit, form, setForm, handleChangeImage }) => {
+const ProjectForm = ({
+  handleSubmit,
+  form,
+  setForm,
+  handleChangeImage,
+  type,
+}) => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     const getCategories = async () => {
@@ -69,7 +75,7 @@ const ProjectForm = ({ handleSubmit, form, setForm, handleChangeImage }) => {
         ))}
       </select>
       <div className="btn-black">
-        <button type="submit">Create</button>
+        <button type="submit">{type}</button>
       </div>
     </form>
   );

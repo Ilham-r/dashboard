@@ -65,6 +65,7 @@ const UpdateA = () => {
         <div className="pages-padding flex-col justify-center items-start gap-8 ">
           <h1 className="head_title w-full ">Update Asset</h1>
           <ProjectForm
+            type="Edit"
             form={result}
             setForm={setResult}
             handleSubmit={handleUpdate}
