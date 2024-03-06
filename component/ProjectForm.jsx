@@ -18,7 +18,12 @@ const ProjectForm = ({
     };
     getCategories();
   }, []);
-
+  const handleCancel = () => {
+    const hasConfirmed = confirm("Are you sure you want to cancel");
+    if (hasConfirmed) {
+      Router.push("/");
+    }
+  };
   return (
     <form onSubmit={handleSubmit} className="form">
       <input
@@ -82,6 +87,7 @@ const ProjectForm = ({
           <option value={cat._id}>{cat.category}</option>
         ))}
       </select>
+
       <div className="btn-black">
         <button type="submit">{type}</button>
       </div>

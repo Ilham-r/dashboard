@@ -68,12 +68,15 @@ const UpdateM = () => {
     }));
   };
   const DeleteImage = (index) => {
-    const images = result.image;
-    images.splice(index, 1);
-    setResult((prevForm) => ({
-      ...prevForm,
-      image: images,
-    }));
+    const hasConfirmed = confirm("Are you sure you want to delete the image?");
+    if (hasConfirmed) {
+      const images = result.image;
+      images.splice(index, 1);
+      setResult((prevForm) => ({
+        ...prevForm,
+        image: images,
+      }));
+    }
   };
   return (
     <>
@@ -89,19 +92,21 @@ const UpdateM = () => {
               handleChangeImage={handleChangeImage}
             />
             <div className="flex h-full flex-col flex-1 items-center justify-center">
-              <h2>images</h2>
               <div className="flex w-full h-full flex-col gap-2 items-center justify-center">
                 {result.image?.map((image, index) => (
                   <div className=" flex relative">
-                    <h2
-                      className="font-semibold  absolute right-2 top-0 cursor-pointer"
+                    <Image
+                      src="/icons/supprimer.png"
+                      width={20}
+                      height={20}
+                      className="font-semibold  absolute right-2 top-1 cursor-pointer z-50"
                       onClick={() => DeleteImage(index)}
-                    >
-                      X
-                    </h2>
+                    />
                     {checkImages(image) ? (
                       <video width="360" height="240" controls>
                         <source src={image} type="video/mp4" />
+                        <source src={image} type="video/webm" />
+                        <source src={image} type="video/ogg" />
                         Your browser does not support the video tag.
                       </video>
                     ) : (

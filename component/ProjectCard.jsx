@@ -8,10 +8,20 @@ const ProjectCard = ({ image, title, handleDelete, handleEdit }) => {
       <h3 className="card-title">{title}</h3>
 
       <div className="card-hover">
-        <h1 className="cursor-pointer" onClick={handleDelete}>
-          delete
-        </h1>
-        <h1 onClick={handleEdit}>Edit</h1>
+        <Image
+          src="/icons/supprimer.png"
+          width={26}
+          height={26}
+          className="cursor-pointer"
+          onClick={handleDelete}
+        />
+        <Image
+          src="/icons/crayon.png"
+          width={26}
+          height={26}
+          className="cursor-pointer"
+          onClick={handleEdit}
+        />
       </div>
     </div>
   );
