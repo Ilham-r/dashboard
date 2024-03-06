@@ -12,7 +12,7 @@ const UpdateA = () => {
   const SearchParams = useSearchParams();
   const checkImages = (image) => {
     const regex = /video/;
-    console.log("functio", regex.test(image));
+
     if (regex.test(image)) {
       return true;
     } else {
@@ -102,20 +102,10 @@ const UpdateA = () => {
                       X
                     </h2>
                     {checkImages(image) ? (
-                      (console.log(
-                        "video",
-                        <CldVideoPlayer
-                          width="1620"
-                          height="1080"
-                          src={image}
-                        />
-                      ),
-                      (
-                        <video width="320" height="240" controls>
-                          <source src={image} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
-                      ))
+                      <video width="320" height="240" controls>
+                        <source src={image} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                     ) : (
                       <Image width={260} height={200} src={image} />
                     )}
