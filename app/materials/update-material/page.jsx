@@ -3,13 +3,11 @@ import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import ProjectForm from "@/component/ProjectForm";
 import { useSession } from "next-auth/react";
-import { CldVideoPlayer } from "next-cloudinary";
+
 import Image from "next/image";
-import "next-cloudinary/dist/cld-video-player.css";
 const UpdateM = () => {
   const router = useRouter();
 
-  const regex = "/video/";
   const { data: session } = useSession();
   const SearchParams = useSearchParams();
   const MaterialId = SearchParams.get("id");
@@ -20,7 +18,7 @@ const UpdateM = () => {
     category: "",
   });
   const checkImages = (image) => {
-    console.log("functio", regex.test(image));
+    const regex = /video/;
     if (regex.test(image)) {
       return true;
     } else {
@@ -102,9 +100,12 @@ const UpdateM = () => {
                       X
                     </h2>
                     {checkImages(image) ? (
-                      <CldVideoPlayer width="360" height="200" src={image} />
+                      <video width="360" height="240" controls>
+                        <source src={image} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                     ) : (
-                      <Image width={260} height={200} src={image} />
+                      <Image width={320} height={280} src={image} />
                     )}
                   </div>
                 ))}

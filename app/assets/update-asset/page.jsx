@@ -107,7 +107,7 @@ const UpdateA = () => {
                         Your browser does not support the video tag.
                       </video>
                     ) : (
-                      <Image width={260} height={200} src={image} />
+                      <Image width={320} height={280} src={image} />
                     )}
                   </div>
                 ))}
