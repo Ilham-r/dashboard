@@ -19,7 +19,6 @@ const Profile = () => {
             <Link href="/categories">
               <div className="dash-card gradient2">Categories</div>
             </Link>
-            <div className="dash-card ">Categories</div>
           </div>
         </div>
       ) : (
