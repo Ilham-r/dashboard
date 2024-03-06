@@ -53,7 +53,11 @@ const ProjectForm = ({
       >
         {({ open }) => {
           return (
-            <button type="button" className="btn-black" onClick={() => open()}>
+            <button
+              type="button"
+              className="btn-black justify-self-start"
+              onClick={() => open()}
+            >
               Upload Images
             </button>
           );
@@ -70,6 +74,10 @@ const ProjectForm = ({
           })
         }
       >
+        <option value="" disabled>
+          None
+        </option>
+
         {categories?.map((cat) => (
           <option value={cat._id}>{cat.category}</option>
         ))}
